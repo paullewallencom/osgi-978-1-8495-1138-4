@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.packtpub.felix</groupId>
+  <artifactId>com.packtpub.felix.bookshelf-service-tui</artifactId>
+  <version>1.7.1</version>
+  <packaging>bundle</packaging>
+
+  <name>Bookshelf Service Text UI</name>
+  <description>Contains the Command implementations for the bookshelf service</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>4.2.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.shell</artifactId>
+      <version>1.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.packtpub.felix</groupId>
+      <artifactId>com.packtpub.felix.bookshelf-service</artifactId>
+      <version>1.7.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.packtpub.felix</groupId>
+      <artifactId>com.packtpub.felix.bookshelf-inventory-api</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-exec</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <inherited>true</inherited>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-Category>sample</Bundle-Category>
+            <Bundle-SymbolicName>${artifactId}</Bundle-SymbolicName>
+            <Bundle-Activator>com.packtpub.felix.bookshelf.service.tui.BookshelfTUIActivator
+            </Bundle-Activator>
+            <Export-Package>
+            </Export-Package>
+          </instructions>
+          <obrRepository>file:/C:/projects/felixbook/dev</obrRepository>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <!-- releases repo -->
+    <repository>
+      <id>repo-rel</id>
+      <url>file:/C:/projects/felixbook/releases</url>
+    </repository>
+
+    <!-- snapshot repo -->
+    <snapshotRepository>
+      <id>repo-snap</id>
+      <url>file:/C:/projects/felixbook/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

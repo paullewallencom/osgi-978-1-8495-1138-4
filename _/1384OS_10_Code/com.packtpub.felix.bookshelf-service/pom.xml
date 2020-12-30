@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.packtpub.felix</groupId>
+	<artifactId>com.packtpub.felix.bookshelf-service
+  </artifactId>
+	<version>1.10.0</version>
+
+	<packaging>bundle</packaging>
+
+	<name>Bookshelf Service</name>
+	<description>Provides the business logic tier functionality for the Bookshelf Service
+  </description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.packtpub.felix</groupId>
+			<artifactId>com.packtpub.felix.bookshelf-inventory-api</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+    <dependency>
+      <groupId>com.packtpub.felix</groupId>
+      <artifactId>com.packtpub.felix.bookshelf-log-api</artifactId>
+      <version>1.10.0</version>
+    </dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.1.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-Category>sample</Bundle-Category>
+						<Bundle-SymbolicName>${artifactId}</Bundle-SymbolicName>
+						<Export-Package>
+							com.packtpub.felix.bookshelf.service.api,com.packtpub.felix.bookshelf.service.impl
+	          </Export-Package>
+						<!--
+							<Bundle-Activator>
+							com.packtpub.felix.bookshelf.service.impl.activator.BookshelfServiceImplActivator
+							</Bundle-Activator> <Private-Package>
+							com.packtpub.felix.bookshelf.service.impl.activator
+							</Private-Package>
+						-->
+					</instructions>
+					<remoteOBR>repo-rel</remoteOBR>
+					<prefixUrl>file:///C:/projects/felixbook/releases</prefixUrl>
+					<ignoreLock>true</ignoreLock>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-ipojo-plugin</artifactId>
+				<version>1.4.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>ipojo-bundle</goal>
+						</goals>
+						<configuration>
+							<metadata>src/main/ipojo/meta.xml</metadata>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<!-- releases repo -->
+		<repository>
+			<id>repo-rel</id>
+			<url>file:///C:/projects/felixbook/releases</url>
+		</repository>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
+  
+  
